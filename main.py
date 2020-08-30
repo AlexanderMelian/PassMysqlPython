@@ -11,7 +11,6 @@ log = StringVar()
 
 
 def register():
-    user.set(user.get().capitalize())
     c_user = user.get()
     usercheck = u_checker(c_user,1)
     if usercheck:
@@ -22,7 +21,6 @@ def register():
             pymysql.register(c_user, c_pass)
 
 def logging():
-    user.set(user.get().capitalize())
     c_user = user.get()
     usercheck = u_checker(c_user,0)
     if usercheck:
@@ -45,7 +43,7 @@ def u_checker(c_user, dupli):
     elif len(c_user) > 10: 
         print("User maximo de 10 caracteres") 
         return False
-    elif not re.match("^[A-Z][a-z]*$", c_user):
+    elif not re.match("^[a-zA-Z]*$", c_user):
         print("User solo caracteres")
         return False
     if dupli:
